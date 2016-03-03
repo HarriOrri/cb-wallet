@@ -1,6 +1,6 @@
 "use strict";
 
-var API = require('cb-blockr')
+var API = require('cb-altcoins')
 var bitcoin = require('bitcoinjs-lib')
 var TxGraph = require('bitcoin-tx-graph')
 var assert = require('assert')
