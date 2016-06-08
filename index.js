@@ -248,6 +248,9 @@ function getCandidateOutputs(allNodes, metadata, network, myAddresses, minConf) 
 
   return confirmedNodes.reduce(function(unspentOutputs, node) {
     node.tx.outs.forEach(function(out, i) {
+      
+      if (!bitcoin.isPubKeyHashOutput(out.script)) return // skip non pay-to-pubkeyhash outputs
+      
       var address = bitcoin.Address.fromOutputScript(out.script, network).toString()
       if(myAddresses.indexOf(address) >= 0 && node.nextNodes[i] == null) {
         unspentOutputs.push({
